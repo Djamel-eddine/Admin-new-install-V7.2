@@ -35,6 +35,7 @@ class OrderController extends Controller
 
     public function place_order(Request $request)
     {
+        //order validator
         $validator = Validator::make($request->all(), [
             'order_amount' => 'required',
             'delivery_address_id' => 'required',
@@ -130,7 +131,7 @@ class OrderController extends Controller
                 }
 
                 //send email
-                Mail::to($request->user()->email)->send(new \App\Mail\OrderPlaced($o_id));
+                // Mail::to($request->user()->email)->send(new \App\Mail\OrderPlaced($o_id));
 
             } catch (\Exception $e) {
 
